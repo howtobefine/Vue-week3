@@ -101,10 +101,12 @@
                                             v-if="!tempProduct.imagesUrl.length || tempProduct.imagesUrl[tempProduct.imagesUrl.length - 1]">
                                             新增圖片
                                         </button>
-                                        <button class="btn btn-outline-danger btn-sm d-block w-100"
-                                            @click="tempProduct.imagesUrl.pop()">
-                                            刪除圖片
-                                        </button>
+                                        <div v-else>
+                                            <button class="btn btn-outline-danger btn-sm d-block w-100"
+                                                @click="tempProduct.imagesUrl.pop()">
+                                                刪除圖片
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

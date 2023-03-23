@@ -12,6 +12,16 @@ const app = {
         }
     },
     methods: {
+        checkAdmin() {
+            axios.post(`${url}api/user/check`)
+                .then(res => {
+                    this.getProducts();
+                })
+                .catch(err => {
+                    alert('驗證資料失敗')
+                    window.location = './index.html'
+                })
+        },
         getProducts() {
             axios.get(`${url}api/${path}/admin/products`)
                 .then(res => {
@@ -68,7 +78,7 @@ const app = {
         // 取出 token
         const token = document.cookie.replace(/(?:(?:^|.*;\s*)myToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
         axios.defaults.headers.common.Authorization = token;
-        this.getProducts();
+        this.checkAdmin();
         // Bootstrap 方法
         // modal 初始化
         productModal = new bootstrap.Modal('#productModal');
